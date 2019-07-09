@@ -25,9 +25,9 @@ import lombok.ToString;
 @Table(name = "brand")
 public class Brand extends BaseEntity {
 	
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
 	//@EqualsAndHashCode.Include
 	@Column(nullable = false)
