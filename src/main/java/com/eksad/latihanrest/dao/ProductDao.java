@@ -1,20 +1,20 @@
 package com.eksad.latihanrest.dao;
 
-
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.eksad.latihanrest.model.Product;
-public interface ProductDao extends CrudRepository<Product, Long> {
+
+public interface ProductDao extends JpaRepository<Product, Long>{
 	
-	@Query("select p from Product p where p.brand.id = :brandId")
+	
+	@Query("select p from Product p where p.brand.id =  :brandId")
 	public Iterable<Product> findByBrandId(@Param("brandId") Long brandId);
 
-	@Query("select p from Product p where p.product.id = :productId")
-	public Iterable<Product> findByProductId(@Param("productId") Long productId);
 
-	public List<Product> findByName(String name);
+	@Query("select b from Product b where b.name = :search") //
+	public List<Product> findBySearch(@Param("search") String search);
 }
